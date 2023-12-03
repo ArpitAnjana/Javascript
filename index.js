@@ -109,3 +109,94 @@ let c = 8;
 let result9 = a < b > c;
 
 console.log(result9);
+
+//==================CHAPTER 2====================
+
+//================CONTROL FLOW===================
+
+let fruits2 = ['🍏','🍎','🍐','🍊'];
+
+for(let i =fruits2.length; i>=0; i--){
+    console.log(fruits2[i])
+}
+
+console.log("=======================")
+let j =0;
+while(j<fruits2.length){
+    console.log(fruits2[j]);
+    j++;
+}
+
+console.log("=======================")
+let k =fruits2.length -1;
+while(k>=0){
+    console.log(fruits2[k])
+    k--;
+}
+console.log("=======================")
+for(let i =0;i<10;i++){
+    if(i==5){
+        continue;
+    }
+    console.log(i)
+}
+console.log("=======================")
+let score = 90;
+if(true){
+    score = 10; //reassign 
+    console.log(score)
+}
+console.log(score)
+
+console.log("=======================")
+let score2=100;
+if(true){
+    let score2 =20;//new declare
+    console.log(score2)
+
+}
+console.log(score2)
+
+console.log("==========================")
+//ternary operator
+const age = 2;
+const weight = 6;
+let result10 = age>18 ? weight>60? "qualify":"weightIssue":"notqualified";//ternary operator
+console.log(result10)
+
+
+console.log("==========================")
+//switch statement:
+let result11;
+let age1 = 15;
+switch(age1){
+    case 13:
+        result11 = "your are tiny"
+        break;
+    case 14:
+    case 15:
+        result11 = "you are allowed to watch the movie";
+        break;
+    default:
+        result11 = "not allowed"
+
+}
+console.log(result11);
+
+let text = '';
+for(let i =0; i<10; i++){
+    if(i===3){
+        continue;
+    }
+    text = text+i;//string concatenation: when a string is made and it is added to a number then it is converted into string the number actually and then added 
+    //and we can see that text was string but the value was null then we performed the addition on it, it automatically understood it was number and added them
+}
+console.log(text);
+console.log('==========================')
+let marks;
+let passing = marks>40? 40:50;
+
+console.log(passing)
+
+
+console.log('===============================')
