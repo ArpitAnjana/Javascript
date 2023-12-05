@@ -200,3 +200,157 @@ console.log(passing)
 
 
 console.log('===============================')
+
+
+//=======================chapter 3=====================
+//=======================Functions=====================
+
+//declaration
+let name2 = 'Arpit'
+function nameOf(){//normal function
+    console.log(`hey there! ${name2}`)
+}
+
+nameOf();//calling function
+
+
+let callME = function(name3){//arguement 
+    //variable is a function here
+    //anonymous function
+    
+    console.log(`hy myself ${name3}`)
+}
+
+callME("soxy");
+
+//Arrow function:
+let invitation = (name3) => `hey ${name3} how are you doing`;
+console.log(invitation('Arpit'));
+
+//Higher order function 
+let upperCase = (str) => {
+    return str.toUpperCase();
+}
+
+let lowerCase = (str) => {
+    return str.toLowerCase();
+}
+
+let result12 = (str, fun) => {//this function takes another function as an arguement 
+    return fun(str);
+}
+
+console.log(result12('Arpit', upperCase))
+
+
+//setTimeOut and setInterval
+function greeting(name4 = 'soxy', language='java'){
+    console.log(`welcome ${name4} to anonymous function in ${language}`)
+}
+//setTimeout(function|code, delay, arg1, arg2)
+setTimeout(greeting,3000, 'Arpit', 'javascript')
+//this was function as an arg
+//takes 3000ms or 3sec to run the function greetings and having 
+
+setInterval(greeting, 3000)
+//setInterval(function,timeinterval|repetation/time, arg)
+//this is continuous function it will continue to work and never ends 
+
+
+//Hoisting: 
+//when a function or variable is defined but used before it is called hoisting
+
+
+test=10;//assigned here
+console.log(test)//called here
+var test;//declaration here
+
+//hoisting function 2:
+test1()
+function test1(){
+    console.log('test1')
+}
+//hositing can be done in this format only not in another type of function like arrow function or initialising an variable to a funtion
+
+//callback function:
+let calculation = (fx , a, b) => {//calculation>fx //1st
+    return fx(a,b);//4th step
+}
+
+let sum = (x,y) => {//3rd step 
+    return x+y;
+}
+
+console.log(calculation(sum, 4, 5));//2nd step //sum is function passsed as an arg
+
+console.log('===============================')
+console.log('===============ASSIGNMENT-2================')
+
+
+console.log("=========1st==========")
+let i = 4;
+
+for (let j = 0; i < 10; i++) {
+  if (j === 1 || i === 6) {
+    continue;
+  } else {
+    console.log(i, j);
+
+    if (i === 7) {
+      break;
+    }
+  }
+}
+
+console.log("=========2nd==========")
+let l = 0;
+
+for (l; l < 5; l++) {
+  console.log(l);
+}
+
+console.log("=========3rd==========")
+let numb = 10;
+while(numb!=0){
+    console.log(numb);
+    numb--;
+}
+
+console.log("=========4th==========")
+let country = 'India';
+let language = 'English';
+let hasPopulation = 90;
+let hasSpanishFood = 'false';
+let hasEnglishFood = 'true';
+if(language == "English" && hasPopulation<10 && (hasEnglishFood||hasSpanishFood)){
+    console.log(`welcome sir ${country} is right country for your.`)
+}
+else{
+    console.log(`sorry sir ${country} is not suited for you.`)
+}
+
+console.log("=========5th==========")
+let m;
+for (m = 0; m < 10; m++) {
+    console.log(m);
+  }
+  
+console.log(m);
+
+console.log("=========6th==========")
+let agee = 20;
+let height = 5.11;
+if(agee===20){
+    if(height>5.10){
+        console.log("i can sit in exam")
+    }
+    
+}
+
+console.log("=========7th==========")
+
+let grade = 'A';
+let passingYear = 2019;
+let result13 = grade=='A' ? passingYear<2020 ? "pass":"rightyear":"fail"
+console.log(result13);
+
