@@ -1,165 +1,153 @@
-//chapter 3 assignment
-console.log('=======CHAPTER 3 ASSIGNMENT===========')
-
-console.log('==========1st=======')
-//hoisting can be done in function declaration
-let Population = '10M';
-let traditional_food = 'chat';
-let historic_places = 'Taj Majal';
-console.log(describeYourState(Population, traditional_food, historic_places))
-function describeYourState(Population, traditional_food, historic_places) {
-    return `My state population is ${Population}, its traditional food is ${traditional_food} and historical place name is ${historic_places}`;
+"use strict"
+//============object in js===========
+let car = {
+    color: "red",
+    model: "2022",
+    company: "Audi"    
 }
+console.log(car.color);
+console.log(car["model"])
+
+let propertyName = 'model';
+
+console.log(car[propertyName]="2023")
+console.log(car.model="2024")
+
+delete car.model;
+console.log(car)
 
 
-console.log('==========2nd=======')
-//hoisting cannot be done in function expression
-
-let describeYourState2 = function (Population, traditional_food, historic_places) {
-    return `My state population is ${Population}, its traditional food is ${traditional_food} and historical place name is ${historic_places}`;
-}
-console.log(describeYourState2(Population, traditional_food, historic_places))
-
-//hoisting means that a function is decalred then it can be called anywhere even before it is declared 
-
-console.log('==========3rd=======')
-
-function sum(a = 1, b = 2) {
-    return a + b;
-};
-// let sum1 = sum();
-console.log(sum())
-console.log('==========4th=======')
+//methods: these are functions inside object
 let person = {
-    name: 'john',
-
-    age: 25,
-};
-
-function greet(person) {
-    person.name = 'arpit'//update the property by change value of the key of object
-    person.name = `Mr ${person.name}`;
-
-
-    return `Welcome ${person.name}`;
-}
-
-console.log(greet(person));
-
-console.log('==========5th=======')
-
-// function seperate(str){
-//     let words = str.split('');
-//     if(words.length>0){
-//         words[0] = words[0].toUpperCase();
-//     }
-//     return words.join('');
-// }
-
-// function transformer(fx,str){
-//     return fx(str);
-// }
-
-// console.log(transformer(seperate, 'arpit'))
-
-function firsetUpperCaseWord(str) {
-    let word = str.split('');
-    if (word[0]) {
-        word[0] = word[0].toUpperCase();
+    ageCal : function(birthyear){
+        return 2023-birthyear;
     }
-    return word.join('');
 }
 
-function transformer2(fx, str) {
-    return fx(str);
+console.log(person.ageCal(2003));
+
+
+//this keyword
+//this is used when we have an object and it had key value pair and it have a method so called function in a object so we can access and modify the properties of object using this key word
+
+let person2 = {
+    firstName: "Harry",
+    lastName : "Brook",
+    city: "Delhi",
+    birthyear: 1987,
+    Education: "software engineer",
+    getSummary: function(){
+        return `${this.firstName}`;//person.firstName will also work but insde an object we can use this keyword
+    } 
+}
+console.log(person2.getSummary());
+
+//foreach
+
+let fruits = ['apple','banana','mango'];
+
+fruits.forEach(fruit=>console.log(fruit));
+console.log('---------------------------')
+fruits.forEach(function(element){
+    console.log(element);
+})
+
+//object inside array
+
+let blockList = [{userName:'Paul', reason:"Abusive content"},{userName:'shanti', reason:'bakchodi'}];
+console.log(blockList);
+for(let i =0 ;i<blockList.length;i++){
+    console.log(`User ${blockList[i].userName} is blocked due to ${blockList[i].reason}`);
 }
 
-console.log(transformer2(firsetUpperCaseWord, 'arpit'))
 
-console.log()
+//function //call and apply method
 
-
-console.log('==========6th=======')
-
-setInterval(wish, 3000, 'Arpit');//hoisting//delay
-function wish(name) {
-    console.log(`hello ${name}`);
-}
-
-console.log('==========7th=======')
-
-let arrowFunction = (name = 'Coders') => {
-    `Welcome ${name}`;
-};
-
-console.log(arrowFunction('Programmers'));//undefined because not return
-
-console.log('==========8th=======')
-
-let a = 5;
-let b = 6;
-let c = 7;
-
-function CalculateArea(s,a,b,c) {
-    return Math.sqrt(s*(s - a)*(s - b)*(s - c));
-}
-
-function CalculateS(a,b,c) {
-    return (a+b+c)/2;
-}
-
-function calculateTriangleArea(a,b,c,CalculateS){
-    let s = CalculateS(a,b,c);
-    return CalculateArea(s,a,b,c);
-}
-
-console.log(calculateTriangleArea(a,b,c,CalculateS));
-
-console.log('==========9th=======');
-
-//1st solution;
-console.log('----------1st solution---------');
-let sentence = 'This is a sample sentence';
-
-function toUpper(word){
-    let wordArray = word.split('');
-    if(word[0]){
-        word[0] = word[0].toUpperCase();
+let classroom = {//this is parent object
+    rollNo:'21',
+    class:'8th',
+    issued:[],
+    issue: function(bookNo,names){
+        console.log(`${names} roll no: ${this.rollNo} issued book number: ${bookNo}`);
+        this.issued.push({class:`${this.class}`, name:names, rollNo:`${this.rollNo}`, bookNo:bookNo});
     }
-    return wordArray.join('');//word array of word
 }
 
-let wordArray = sentence.split(' ');//word array of sentence
-for(let i =0; i<wordArray.length;i++){
-    wordArray[i] = toUpper(wordArray[i]);
+classroom.issue(553, 'Arpit');
+classroom.issue(232,'soxy')
+console.log(classroom)
+
+let childClass = {//this is child object
+    class:'7th',
+    rollNo:'11',
+    issued:[],
 }
 
-let modifiedSentence = wordArray.join(' ');
-console.log(modifiedSentence);
 
 
-console.log('---------2nd solution-----------');
+//==========CALL METHOD==================
+
+// let issue = classroom.issue; //issue is regular function
+//issue(123,'anuj'); //this value is undefined at global scope
+
+let issue = classroom.issue; //using issue method in parent object and storing in variable
+
+issue.call(childClass, 123, 'Anuj')//using call method to use properties of parent object to child object
+//mehtodName.call(nameOFobject, ar1,agr2...)
+
+console.log(childClass)
+
+issue.call(classroom, 1234, 'Arpit')// here he used the same method and called it but inside parent object itself
+console.log(classroom)
 
 
+//===============APPLY METHOD==============
+//here we can use array method using apply to fill in object
+issue.apply(childClass, [89,'Pal']) 
 
 
-function capitaliseFirstLetter(word) {
-    return word.charAt(0).toUpperCase() + word.slice(1);
+//=============BIND METHOD=================
+//in call you can access the method inside a object
+//but when there is no method in object then another funciton is outside the scope of object then we use bind method to bind the function in object so we can use it as property of object 
+function greet(){
+    console.log(`welcome ${this.firstName} ${this.lastName} on practice code`)
 }
 
-function capitaliseSentence(sentence) {
-    let wordArray = sentence.split(' ');
-    let updatedArray = [];
-    
-    for (let i = 0; i < wordArray.length; i++) {
-        let word = wordArray[i];
-        let updatedWord = capitaliseFirstLetter(word);
-        updatedArray.push(updatedWord);
-    }
-
-    return updatedArray.join(' ');
+let user = {
+    firstName:'Arpit',
+    lastName:'Anjana'
 }
 
-let sentence2 = 'This is a sample sentence2';
-let updatedSentence = capitaliseSentence(sentence2);
-console.log(updatedSentence);
+//function.bind(object)
+let greets = greet.bind(user);
+
+greets();
+
+//=============for-in loop=====================
+let car2 = {
+    model:'2022',
+    color:'black',
+    company:'BMW'
+}
+
+
+for(let key in car2){
+    console.log(key);
+}
+console.log(car2);
+let x ='';
+for(let key in car2){
+    x  = x+car2[key] ; //car2 is object and key is key car2[key] is like accessing car2 objects key's values
+}
+
+console.log(x)
+
+
+//==============ex2 for in loop=========
+
+const object = {a:1, b:2, c:3};
+
+for(const property in object){
+    console.log(`${property} : ${object[property]}`)
+}
+
