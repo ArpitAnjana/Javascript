@@ -35,5 +35,5 @@ console.log(localStorage);
 //==get item===
 
 let objectformat = localStorage.getItem('vehicles');
-let objectFromate = JSON.parse(objectformat)
+let objectFromate = JSON.parse(objectformat)//parse: from another type to string
 console.log(objectFromate)
